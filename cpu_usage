@@ -1,0 +1,18 @@
+import psutil
+import time
+def monitor_cpu(threshold=80.0, check_interval=1.0):
+    while True:
+            # Get current CPU usage percentage
+            cpu_usage = psutil.cpu_percent(interval=check_interval)
+            
+            # Check if CPU usage exceeds the threshold
+            if cpu_usage > threshold:
+                print(f"ALERT: High CPU usage detected! Current usage: {cpu_usage}%")
+            else:
+                print(f"CPU usage is normal: {cpu_usage}%")
+if __name__ == "__main__":
+    # Define the CPU usage threshold and check interval
+    CPU_THRESHOLD = 80.0  # Example threshold in percent
+    CHECK_INTERVAL = 1.0  # Check every 1 second
+
+    monitor_cpu(threshold=CPU_THRESHOLD, check_interval=CHECK_INTERVAL)
